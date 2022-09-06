@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Now, we want to center the BODY of our content. Mostly the modal. 
+
+We use:
+display: flex;
+ustify-content: center;
+align-items: center;
+
+This will bring the box in the middle HORIZONTALLY. 
+
+NOW, we want to center VERTICALLY...
+It won't happen right now because our container isn't the 100% height of the screen.
+
+We'll set height of BODY to 100vh and then it automatically centers it vertically.
+
+We set margin: 0 so that we can remove the second scroll bar that was attached to body. We only want modal to have the scrollbar.
+
+*/
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #555;
+}
+
+/* 
+height will be 80% of the screen so 80vh
+overflow is hidden because the text doesn't stop if we don't put it. It overflows from the screen. If we use overflow: auto, it adds a scrolling bar.
+the reason why max width is set, if the screen is small, the max width will be only 80% but if the screen can show 900px completely, then it will show 900
+so by this, we have min width of 900px and max of 80% of the screen. 
+
+We set modal to display flex so that the elements could be designed with the flexbox model.
+
+We use flex direction as column so that we can make things in vertical 
+*/
+
+.modal {
+  height: 80vh;
+  width: 900px;
+  max-width: 80%;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Now we display: flex our HEADER. We do this because we want to space out our Title and the X (CANCEL BUTTON)
+We use space-between so the title and cancel button go on the extreme ends of left and right respectively.
+We add padding so they are not on extreme ends and come a lil in the center.
+ */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid #777;
+  padding-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+/* background and border are none because we want a clean look and only cross.
+
+padding on top cos looks nice
+
+align self: flex start so that it isn't strecthed from top to bottom but only stays in top area.
+*/
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* .body is the texrt block that we have lorem ipsum in.
+flex grow helps the text section stay full size to the container. Completely covering the container = text. ALSO, if we have low text count, it leaves the space as is and doesn't push elements in the down up. It creates a pretty lil space in the container for the element.
+
+
+setting overflow auto here and removing from main hero container gives a scrollbar only to the text block in div.
+
+
+*/
+
+.body {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/* 
+flex end helps bring both the buttons in the end.
+
+border top adds a nice border not on the buttons but the div that has buttons so it created a clean separation.
+*/
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  border-top: 1px solid #777;
+}
+
+.footer .btn {
+  margin-right: 0.5rem;
+}
+
+/* this .footer .btn:last-child picks the LAST CHILD of the btn class and makes the margin of it set to how it was initially which is of the CANCEL BUTTON, it removes the right margin that we put earlier while putting the margin for the OK button */
+
+.footer .btn:last-child {
+  margin-right: initial;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  font-size: inherit;
+  border-radius: 0.3em;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.btn-primary {
+  background-color: #1ca;
+  color: white;
+}
+
+/* Basically darkening the color when it hovers or gets clicked i.e in focus*/
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background-color: #0a8;
+}
+
+.btn.btn-danger {
+  background-color: #c33;
+  color: white;
+}
+
+.btn.btn-danger:hover,
+.btn.btn-danger:focus {
+  background-color: #a11;
+}
